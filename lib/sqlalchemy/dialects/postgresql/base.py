@@ -916,6 +916,7 @@ E.g.::
 from collections import defaultdict
 import re
 import datetime as dt
+import dateutil.parser as dp
 
 
 from sqlalchemy.sql import elements
@@ -1025,6 +1026,20 @@ class TIME(sqltypes.TIME):
     def __init__(self, timezone=False, precision=None):
         super(TIME, self).__init__(timezone=timezone)
         self.precision = precision
+
+
+class ABSTIME(sqltypes.TypeDecorator):
+
+    __visit_name__ = "ABSTIME"
+
+    impl = sqltypes.TIMESTAMP
+
+    def process_bind_param(self, value, dialect):
+        return dt.datetime.strftime(value, "%Y-%m-%d %H:%M:%S%z") \
+            if value != 'infinity' else value
+
+    def process_result_value(self, value, dialect):
+        return dp.parse(value) if value != 'infinity' else dt.datetime.max
 
 
 class INTERVAL(sqltypes.NativeForEmulated, sqltypes._AbstractInterval):
@@ -1404,6 +1419,7 @@ ischema_names = {
     'time without time zone': TIME,
     'date': DATE,
     'time': TIME,
+    'abstime': ABSTIME,
     'bytea': BYTEA,
     'boolean': BOOLEAN,
     'interval': INTERVAL,
@@ -1966,6 +1982,9 @@ class PGTypeCompiler(compiler.GenericTypeCompiler):
             if getattr(type_, 'precision', None) is not None else "",
             (type_.timezone and "WITH" or "WITHOUT") + " TIME ZONE"
         )
+
+    def visit_ABSTIME(self, type_, **kw):
+        return "ABSTIME"
 
     def visit_INTERVAL(self, type_, **kw):
         text = "INTERVAL"

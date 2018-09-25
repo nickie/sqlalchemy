@@ -142,6 +142,7 @@ def run_setup(with_cext):
         tests_require=['pytest >= 2.5.2', 'mock', 'pytest-xdist'],
         long_description=readme,
         python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
+        install_requires=['python-dateutil'],
         classifiers=[
             "Development Status :: 5 - Production/Stable",
             "Intended Audience :: Developers",
@@ -164,7 +165,7 @@ def run_setup(with_cext):
             'mysql': ['mysqlclient'],
             'pymysql': ['pymysql'],
             'postgresql': ['psycopg2'],
-            'postgresql_psycopg2binary': ['psycopg2-binary'],            
+            'postgresql_psycopg2binary': ['psycopg2-binary'],
             'postgresql_pg8000': ['pg8000'],
             'postgresql_psycopg2cffi': ['psycopg2cffi'],
             'oracle': ['cx_oracle'],

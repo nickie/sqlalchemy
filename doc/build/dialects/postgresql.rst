@@ -16,13 +16,15 @@ they originate from :mod:`sqlalchemy.types` or from the local dialect::
         ARRAY, BIGINT, BIT, BOOLEAN, BYTEA, CHAR, CIDR, DATE, \
         DOUBLE_PRECISION, ENUM, FLOAT, HSTORE, INET, INTEGER, \
         INTERVAL, JSON, JSONB, MACADDR, MONEY, NUMERIC, OID, REAL, SMALLINT, TEXT, \
-        TIME, TIMESTAMP, UUID, VARCHAR, INT4RANGE, INT8RANGE, NUMRANGE, \
+        TIME, TIMESTAMP, ABSTIME, UUID, VARCHAR, INT4RANGE, INT8RANGE, NUMRANGE, \
         DATERANGE, TSRANGE, TSTZRANGE, TSVECTOR
 
 Types which are specific to PostgreSQL, or have PostgreSQL-specific
 construction arguments, are as follows:
 
 .. currentmodule:: sqlalchemy.dialects.postgresql
+
+.. autoclass:: ABSTIME
 
 .. autoclass:: aggregate_order_by
 
@@ -217,4 +219,3 @@ zxjdbc
 ------
 
 .. automodule:: sqlalchemy.dialects.postgresql.zxjdbc
-

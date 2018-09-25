@@ -1698,6 +1698,7 @@ class SpecialTypesTest(fixtures.TestBase, ComparesTables, AssertsCompiledSQL):
             Column('month_interval', d2s()),
             Column('precision_interval', postgresql.INTERVAL(
                 precision=3)),
+            Column('valid_until', postgresql.ABSTIME),
             Column('tsvector_document', postgresql.TSVECTOR))
 
         metadata.create_all()

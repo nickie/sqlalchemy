@@ -11,7 +11,7 @@ from . import base, psycopg2, pg8000, pypostgresql, pygresql, \
 from .base import \
     INTEGER, BIGINT, SMALLINT, VARCHAR, CHAR, TEXT, NUMERIC, FLOAT, REAL, \
     INET, CIDR, UUID, BIT, MACADDR, MONEY, OID, REGCLASS, DOUBLE_PRECISION, \
-    TIMESTAMP, TIME, DATE, BYTEA, BOOLEAN, INTERVAL, ENUM, TSVECTOR, \
+    TIMESTAMP, TIME, DATE, ABSTIME, BYTEA, BOOLEAN, INTERVAL, ENUM, TSVECTOR, \
     DropEnumType, CreateEnumType
 from .hstore import HSTORE, hstore
 from .json import JSON, JSONB, json
@@ -28,9 +28,9 @@ base.dialect = dialect = psycopg2.dialect
 __all__ = (
     'INTEGER', 'BIGINT', 'SMALLINT', 'VARCHAR', 'CHAR', 'TEXT', 'NUMERIC',
     'FLOAT', 'REAL', 'INET', 'CIDR', 'UUID', 'BIT', 'MACADDR', 'MONEY', 'OID',
-    'REGCLASS', 'DOUBLE_PRECISION', 'TIMESTAMP', 'TIME', 'DATE', 'BYTEA',
-    'BOOLEAN', 'INTERVAL', 'ARRAY', 'ENUM', 'dialect', 'array', 'HSTORE',
-    'hstore', 'INT4RANGE', 'INT8RANGE', 'NUMRANGE', 'DATERANGE',
+    'REGCLASS', 'DOUBLE_PRECISION', 'TIMESTAMP', 'TIME', 'DATE', 'ABSTIME',
+    'BYTEA', 'BOOLEAN', 'INTERVAL', 'ARRAY', 'ENUM', 'dialect', 'array',
+    'HSTORE', 'hstore', 'INT4RANGE', 'INT8RANGE', 'NUMRANGE', 'DATERANGE',
     'TSRANGE', 'TSTZRANGE', 'json', 'JSON', 'JSONB', 'Any', 'All',
     'DropEnumType', 'CreateEnumType', 'ExcludeConstraint',
     'aggregate_order_by', 'array_agg', 'insert', 'Insert'
